@@ -38,9 +38,9 @@ function App() {
 
         // there are two types of runners: for Python(ECRunner.PYNITHY_RUNNER_TESTNET) and Node.js(ECRunner.NODENITHY_RUNNER_TESTNET)
         // based on this you should use appropriate runner type, for this example we are using PYNITHY_RUNNER_TESTNET since we are executing a python script
-        await runner.run(ECRunner.PYNITHY_RUNNER_TESTNET, pythonCode, '0x73842b5e67a321516cBA1d384E8B2cD70404148b');
+        await runner.run(ECRunner.PYNITHY_RUNNER_TESTNET, pythonCode);
         // in case you want to use Node.js
-        //await runner.run(ECRunner.NODENITHY_RUNNER_TESTNET, jsCode, '0x73842b5e67a321516cBA1d384E8B2cD70404148b');
+        //await runner.run(ECRunner.NODENITHY_RUNNER_TESTNET, jsCode);
     };
 
     return (
