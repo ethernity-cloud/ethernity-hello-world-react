@@ -2,17 +2,7 @@ import './App.css';
 import EthernityCloudRunner from "@ethernity-cloud/runner";
 import {ECEvent, ECRunner, ECStatus} from "@ethernity-cloud/runner/enums";
 
-// example of a Python script
-const pythonCode = `
-def sum(a, b):
-    return a + b        
-a=1
-b=10        
-___etny_result___(str(sum(a, b)))`;
-
-// example of a Node.js script
-// const jsCode = `function add(a, b) {\n  return a + b;\n}\n ___etny_result___(add(1, 10).toString());`;
-
+const code = `___etny_result___("Hello, World!")`;
 function App() {
     const executeTask = async () => {
         const runner = new EthernityCloudRunner();
@@ -38,9 +28,9 @@ function App() {
 
         // there are two types of runners: for Python(ECRunner.PYNITHY_RUNNER_TESTNET) and Node.js(ECRunner.NODENITHY_RUNNER_TESTNET)
         // based on this you should use appropriate runner type, for this example we are using PYNITHY_RUNNER_TESTNET since we are executing a python script
-        await runner.run(ECRunner.PYNITHY_RUNNER_TESTNET, pythonCode);
+        await runner.run(ECRunner.PYNITHY_RUNNER_TESTNET, code);
         // in case you want to use Node.js
-        //await runner.run(ECRunner.NODENITHY_RUNNER_TESTNET, jsCode);
+        //await runner.run(ECRunner.NODENITHY_RUNNER_TESTNET, code);
     };
 
     return (

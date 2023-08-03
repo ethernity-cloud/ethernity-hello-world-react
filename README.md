@@ -179,13 +179,13 @@ its asynchronous, event-driven nature and extensive library support.
 
 Below there is an example of Node.js code that computes the sum of two numbers:
 
-   ```javascript
-   function add(a, b) {
+```javascript
+function add(a, b) {
     return a + b;
 }
 
 ___etny_result___(add(1, 10).toString());
-   ```
+```
 
 To use either template, users need to provide the code in the corresponding programming language that defines the
 specific task they want to execute. This code will be packaged and executed within the Ethernity Cloud environment,
@@ -198,15 +198,15 @@ distributed computing for their applications and tasks.
 
 For our example we are using the following code:
 
-   ```javascript
-   // example of a Python script
-const pythonCode = `
-   def sum(a, b):
-       return a + b        
-   a=1
-   b=10        
-   ___etny_result___(str(sum(a, b)))`;
-   ```
+```javascript
+const code = `___etny_result___("Hello, World!")`;
+```
+
+The `___etny_result___` function is a special function used in Ethernity Cloud Runner tasks. When executing a task, this function allows the task code to send the result back to the Ethernity Cloud platform.
+
+In the context of the Ethernity Cloud Runner, tasks are executed in a decentralized and distributed manner. The `___etny_result___` function acts as a communication channel between the task code and the Ethernity Cloud platform. When the function is called with the result data as its argument, it sends the result back to the platform, where it can be processed and stored.
+
+This special function plays a crucial role in ensuring that the results of executed tasks are properly recorded and accessible. It enables seamless interaction with the Ethernity Cloud platform, making it a key component of the Ethernity Cloud Runner's functionality.
 
 3. **App Function Component:**
 
@@ -375,13 +375,7 @@ import './App.css';
 import EthernityCloudRunner from "@ethernity-cloud/runner";
 import {ECEvent, ECRunner, ECStatus} from "@ethernity-cloud/runner/enums";
 
-// example of a Python script
-const pythonCode = `
-def sum(a, b):
-    return a + b        
-a=1
-b=10        
-___etny_result___(str(sum(a, b)))`;
+const code = `___etny_result___("Hello, World!")`;
 
 // example of a Node.js script
 // const jsCode = `function add(a, b) {\n  return a + b;\n}\n ___etny_result___(add(1, 10).toString());`;
@@ -414,9 +408,9 @@ function App() {
         //    - Node.js(ECRunner.NODENITHY_RUNNER_TESTNET)
         // based on this you should use appropriate runner type
         // for this example we are using PYNITHY_RUNNER_TESTNET since we are executing a python script
-        await runner.run(ECRunner.PYNITHY_RUNNER_TESTNET, pythonCode);
+        await runner.run(ECRunner.PYNITHY_RUNNER_TESTNET, code);
         // in case you want to use Node.js
-        //await runner.run(ECRunner.NODENITHY_RUNNER_TESTNET, jsCode);
+        //await runner.run(ECRunner.NODENITHY_RUNNER_TESTNET, code);
     };
 
     return (
@@ -429,12 +423,9 @@ function App() {
 export default App;
 ```
 
-The App.js file of a React app is responsible for integrating the Ethernity Cloud Runner module into the application.
-Here's a description of the section:
-
 11. **Application styling**
 
-    Now go on src/App.css file and update the content adding following css classes:
+Now, navigate to the src/App.css file and proceed to enhance its content by adding the following CSS classes:
 
 ```css
 .container {
@@ -459,6 +450,6 @@ Here's a description of the section:
 ```
 
 In conclusion, the above-mentioned code elegantly integrates the Ethernity Cloud Runner into your React app, enabling
-seamless execution of Python code snippets while facilitating interaction with the IPFS network for efficient data
+seamless execution of Python/Node.js code snippets while facilitating interaction with the IPFS network for efficient data
 storage and retrieval. As a professional developer, you can now leverage this integration to enhance your React
 applications with powerful decentralized task execution capabilities.
